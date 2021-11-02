@@ -21,10 +21,17 @@ RSpec.describe 'Movie Show Page' do
 
   it 'displays a movies information' do
     visit movie_path(@raiders.id)
-    save_and_open_page
+
     expect(page).to have_content(@raiders.title)
     expect(page).to have_content(@raiders.genre)
     expect(page).to have_content(@raiders.creation_year)
     expect(page).to_not have_content(@starwars.title)
+  end
+
+  it 'displays the cast from youngest to oldest' do
+    visit movie_path(@raiders.id)
+
+    expect(@actor_3.name).to appear_before(@actor_1.name)
+    expect(@actor_4.name).to appear_before(@actor_1.name)
   end
 end
