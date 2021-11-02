@@ -5,3 +5,4 @@
 <p>Cast: <% @movie.cast_sort.each do |actor| %></p>
   <%= actor.name %>
   <% end %>
+<p>Average age of cast: <%= @movie.avg_actor_age %>

@@ -30,8 +30,15 @@ RSpec.describe 'Movie Show Page' do
 
   it 'displays the cast from youngest to oldest' do
     visit movie_path(@raiders.id)
-    save_and_open_page
+
     expect(@actor_3.name).to appear_before(@actor_1.name)
     expect(@actor_4.name).to appear_before(@actor_1.name)
+  end
+
+  it 'displays the average age of the cast' do
+    visit movie_path(@starwars.id)
+
+    expect(@actor_2.name).to appear_before(@actor_1.name)
+    expect(page).to have_content("Average age of cast: #{@starwars.avg_actor_age}")
   end
 end
