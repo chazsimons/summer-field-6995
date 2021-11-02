@@ -2,3 +2,6 @@
 
 <p>Genre: <%= @movie.genre %></p>
 <p>Creation Year: <%= @movie.creation_year %></p>
+<p>Cast: <% @movie.cast_sort.each do |actor| %></p>
+  <%= actor.name %>
+  <% end %>
