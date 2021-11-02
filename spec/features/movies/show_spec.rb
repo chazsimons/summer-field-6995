@@ -41,4 +41,16 @@ RSpec.describe 'Movie Show Page' do
     expect(@actor_2.name).to appear_before(@actor_1.name)
     expect(page).to have_content("Average age of cast: #{@starwars.avg_actor_age}")
   end
+
+  it 'can search for actor to add to movie' do
+    visit movie_path(@starwars.id)
+
+    expect(page).to_not have_content(@actor_4.name)
+
+    fill_in :add_actor, with: 'Alfred Molina'
+    click_button "Submit"
+    expect(page).to have_content(@actor_4.name)
+    expect(@actor_2.name).to appear_before(@actor_4.name)
+    expect(@actor_4.name).to appear_before(@actor_1.name)
+  end
 end

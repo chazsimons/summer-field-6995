@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :studios, only: [:index]
 
   resources :movies, only: [:show]
+
+  post "/movies/:movie_id/actors", to: 'actor_movies#create'
 end
